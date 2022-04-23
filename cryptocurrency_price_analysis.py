@@ -89,11 +89,11 @@ for crypto in cryptocurrenices:
     dataset_train_scaled
     dataset_train_scaled.shape
 
-    plt.subplots(figsize = (15,6))
-    plt.plot(dataset_train_scaled)
-    plt.xlabel("Days")
-    plt.ylabel(crypto+" Normalized Mean Price")
-    plt.show()
+    # plt.subplots(figsize = (15,6))
+    # plt.plot(dataset_train_scaled)
+    # plt.xlabel("Days")
+    # plt.ylabel(crypto+" Normalized Mean Price")
+    # plt.show()
 
     """
     <a id="5"></a>
@@ -249,14 +249,14 @@ for crypto in cryptocurrenices:
     print("Shape of y_pred_of_test :",y_pred_of_test.shape)
 
     # visualisation
-    plt.figure(figsize = (15,6))
-    plt.plot(y_pred_of_test, label = "y_pred_of_test", c = "orange")
-    plt.plot(scaler.inverse_transform(y_test), label = "y_test", c = "g")
-    plt.xlabel("Days")
-    plt.ylabel("Mean price")
-    plt.title("Simple RNN model - "+crypto+", Prediction with input X_test vs y_test")
-    plt.legend()
-    plt.show()
+    # plt.figure(figsize = (15,6))
+    # plt.plot(y_pred_of_test, label = "y_pred_of_test", c = "orange")
+    # plt.plot(scaler.inverse_transform(y_test), label = "y_test", c = "g")
+    # plt.xlabel("Days")
+    # plt.ylabel("Mean price")
+    # plt.title("Simple RNN model - "+crypto+", Prediction with input X_test vs y_test")
+    # plt.legend()
+    # plt.show()
 
 
     from sklearn.metrics import mean_absolute_percentage_error
@@ -290,14 +290,14 @@ for crypto in cryptocurrenices:
     y_pred_of_test=model_lstm.predict(X_test)
     y_pred_of_test=scaler.inverse_transform(y_pred_of_test)
 
-    plt.subplots(figsize =(15,6))
-    plt.plot(y_pred_of_test, label = "y_pred_of_test", c = "orange")
-    plt.plot(scaler.inverse_transform(y_test), label = "y_test", color = "g")
-    plt.xlabel("Days")
-    plt.ylabel("Mean price")
-    plt.title("LSTM model - "+crypto+", Predictions with input X_test vs y_test")
-    plt.legend()
-    plt.show()
+    # plt.subplots(figsize =(15,6))
+    # plt.plot(y_pred_of_test, label = "y_pred_of_test", c = "orange")
+    # plt.plot(scaler.inverse_transform(y_test), label = "y_test", color = "g")
+    # plt.xlabel("Days")
+    # plt.ylabel("Mean price")
+    # plt.title("LSTM model - "+crypto+", Predictions with input X_test vs y_test")
+    # plt.legend()
+    # plt.show()
 
 
     lstm_mape.append(round(mean_absolute_percentage_error(scaler.inverse_transform(y_test), y_pred_of_test)*100,2))
@@ -309,27 +309,27 @@ for crypto in cryptocurrenices:
   
 X_axis = np.arange(len(cryptocurrenices))
   
-plt.bar(X_axis - 0.15, rnn_mape, 0.3, label = 'RNN')
-plt.bar(X_axis + 0.15, lstm_mape, 0.3, label = 'LSTM')
+# plt.bar(X_axis - 0.15, rnn_mape, 0.3, label = 'RNN')
+# plt.bar(X_axis + 0.15, lstm_mape, 0.3, label = 'LSTM')
   
-plt.xticks(X_axis, cryptocurrenices)
-plt.xlabel("Cryptocurrencies")
-plt.ylabel("MAPE in %")
-plt.title("MAPE for RNN and LSTM for all cryptocurrencies")
-plt.legend()
-plt.savefig('all-crypto-accuracy.png')
-plt.show()
+# plt.xticks(X_axis, cryptocurrenices)
+# plt.xlabel("Cryptocurrencies")
+# plt.ylabel("MAPE in %")
+# plt.title("MAPE for RNN and LSTM for all cryptocurrencies")
+# plt.legend()
+# plt.savefig('all-crypto-accuracy.png')
+# plt.show()
 
 
 rnn_mape_final=sum(rnn_mape)/len(cryptocurrenices)
 lstm_mape_final=sum(lstm_mape)/len(cryptocurrenices)
 
-plt.bar(['RNN','LSTM'], [rnn_mape_final,lstm_mape_final])
-plt.xlabel("Algorithm used")
-plt.ylabel("MAPE in %")
-plt.title("MAPE of the Algorithms")
-plt.savefig('algorithm-accuracy.png')
-plt.show()
+# plt.bar(['RNN','LSTM'], [rnn_mape_final,lstm_mape_final])
+# plt.xlabel("Algorithm used")
+# plt.ylabel("MAPE in %")
+# plt.title("MAPE of the Algorithms")
+# plt.savefig('algorithm-accuracy.png')
+# plt.show()
 
 
 
